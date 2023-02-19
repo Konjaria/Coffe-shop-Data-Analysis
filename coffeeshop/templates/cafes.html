@@ -1,0 +1,45 @@
+{% extends "index.html" %}
+<html>
+{% block title %}
+All Cafes
+{% endblock%}
+<body>
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <h1>All Cafes</h1>
+
+	  <table class="table">
+          <thead>
+            <tr>
+            {% for i in cafes[0] %}
+              <th scope="col" style="color: #fff; font-weight: bold;">{{ header }}</th>
+            {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+              {%for row in cafes[1:] %}
+                <tr>
+                    {% for row_item in row %}
+                        {% if row.index(row_item) != 1 %}
+                            <td style="color: #fff">{{ row_item }}</td>
+                        {% else %}
+                            <td style="color: #fff"><a href="{{ row_item }}">Map Link</a></td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+              {% endfor %}
+          </tbody>
+  	  </table>
+
+      <p><a href="/">Return to index page</a></p>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+</body>
+</html>
